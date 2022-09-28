@@ -23,12 +23,17 @@ def check_words(number_errors, right_choose, bad_words_choose, word_letters)
   while number_errors <= ATTEMPTS_ERRORS
     print_(number_errors, right_choose, bad_words_choose, word_letters)
     choose_letter = STDIN.gets.chomp
-    result_check = result_(choose_letter, right_choose, bad_words_choose, word_letters)
-    if result_check == 2
-      number_errors += 1
+    if choose_letter.match?(/[A-Za-z]/)
+      result_check = result_(choose_letter, right_choose, bad_words_choose, word_letters)
+      if result_check == 2
+        number_errors += 1
+      end
+    else
+    puts "Only letters)"
     end
   end
 end
+
 
 def print_words(word_letters, right_choose)
   result = ""
